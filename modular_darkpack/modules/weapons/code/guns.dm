@@ -743,7 +743,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/musket
 	name = "antique musket"
-	desc = "A antique musket, likely from the mid 19th century. Luckily this appears to be a simple cartriage loader; just load it, ram, cock, and fire!"
+	desc = "A antique musket, likely from the mid 19th century. Luckily this appears to be a simple cartrige loader; just load it, ram, cock, and fire!"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "musket"
