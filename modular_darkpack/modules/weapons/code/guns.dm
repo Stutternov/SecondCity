@@ -507,7 +507,7 @@
 	name = "lever action internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
 	caliber = CALIBER_44
-	max_ammo = 10	//10 + 1 in chamber
+	max_ammo = 13
 
 /obj/item/gun/ballistic/rifle/darkpack/lever
 	name = "lever action rifle"
@@ -527,18 +527,16 @@
 	semi_auto = FALSE
 	internal_magazine = TRUE
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/lever.ogg'
-	//fire_sound_volume = 90
 	vary_fire_sound = FALSE
 	rack_sound = 'modular_darkpack/modules/weapons/sounds/bolt/lever_out.ogg'
 	bolt_drop_sound = 'modular_darkpack/modules/weapons/sounds/bolt/lever_in.ogg'
 	tac_reloads = FALSE
 	recoil = 2
-	fire_delay = 1						//It's bolt-action. Fast as you can go, really; which is still pretty slow.
+	fire_delay = 1					//It's bolt-action. Fast as you can go really; which is still pretty slow.
 	burst_size = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK
-	projectile_damage_multiplier = 1.5 //~52 damage vs 35 base .44 damage. It's ok, on par with 5.56 but lower pen and slower to fire.
-	actions_types = list()
+	projectile_damage_multiplier = 1.5 //~52 damage vs 35 base .44 damage. It's ok, on par with 5.56 but lower pen and slower to fire due to bolt action.
 	masquerade_violating = FALSE
 
 /obj/item/ammo_box/magazine/internal/vampire/sniper
