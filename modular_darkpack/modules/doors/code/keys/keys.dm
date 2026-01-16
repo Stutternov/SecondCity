@@ -3,6 +3,7 @@
 	desc = "Those can open some doors."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "keys"
+	gender = PLURAL
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
 	armor_type = /datum/armor/keys
@@ -366,14 +367,14 @@
 	color = "#466a72"
 
 /obj/item/vamp/keys/pentex
-	name = "\improper " + EVIL_OIL_COMPANY + " Facility keys"
+	name = "\improper " + MAIN_EVIL_COMPANY + " facility keys"
 	accesslocks = list(
 		LOCKACCESS_PENTEX
 	)
 	color = "#062e03"
 
 /obj/item/vamp/keys/pentex/leader
-	name = "\improper " + EVIL_OIL_COMPANY + " Management keys"
+	name = "\improper " + MAIN_EVIL_COMPANY + " management keys"
 	accesslocks = list(
 		LOCKACCESS_PENTEX,
 		LOCKACCESS_PENTEX_LEADER

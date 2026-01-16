@@ -22,6 +22,10 @@
 	fax_name = "Federal Government"
 	fax_id = "policeadmin"
 
+/obj/machinery/fax/admin/fbi
+	fax_name = "FBI National Headquarters"
+	fax_id = "fbi"
+
 /obj/machinery/fax/admin/endron
 	fax_name = EVIL_COMPANY + " Corporate"
 	fax_id = "endronadmin"
@@ -54,7 +58,7 @@
 	special_networks = list(policeadmin = list(fax_name = "Federal Government", fax_id = "policeadmin", color = "blue", emag_needed = FALSE))
 
 /obj/machinery/fax/endron
-	fax_name = EVIL_OIL_COMPANY + " International HQ"
+	fax_name = MAIN_EVIL_COMPANY + " HQ"
 	fax_id = "endron"
 	special_networks = list(endronadmim = list(fax_name = EVIL_COMPANY + " Corporate", fax_id = "endronadmin", color = "green", emag_needed = FALSE))
 
