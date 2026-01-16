@@ -661,6 +661,7 @@
 	icon_state = "dbarrel"
 	inhand_icon_state = "dbarrel"
 	base_icon_state = "dbarrel"
+	worn_icon_state = "pomp"
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	burst_fire_selection = TRUE
 	burst_size = 2	//So you can fire both barrels at once.
@@ -677,7 +678,7 @@
 // Allows break-action appearance when shells are ejected.
 /obj/item/gun/ballistic/shotgun/vampire/doublebarrel/update_icon_state()
 	. = ..()
-	icon_state = "[base_icon_state][!chambered ? "_empty" : ""]"
+	icon_state = "[base_icon_state][!chambered ? "_empty" : ""][sawn_off ? "_sawn" : ""]"
 
 /obj/item/ammo_box/magazine/darkpackautoshot
 	name = "shotgun magazine (12ga)"
