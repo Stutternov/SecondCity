@@ -503,7 +503,7 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/thompson.ogg'
 	masquerade_violating = TRUE
 
-/obj/item/ammo_box/magazine/internal/vampire/lever
+/obj/item/ammo_box/magazine/internal/darkpack/lever
 	name = "lever action internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
 	caliber = CALIBER_44
@@ -515,12 +515,13 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_guns.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "lever"
 	inhand_icon_state = "lever"
 	worn_icon_state = "lever"
 	w_class = WEIGHT_CLASS_BULKY
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampire/lever
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/darkpack/lever
 	bolt_wording = "bolt"
 	need_bolt_lock_to_interact = TRUE
 	bolt_type = BOLT_TYPE_LOCKING
@@ -743,7 +744,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/musket
 	name = "antique musket"
-	desc = "A antique musket, likely from the mid 19th century. Luckily this appears to be a simple cartriage loader; just load it, ram, cock, and fire!"
+	desc = "A antique musket, likely from the mid 19th century. Luckily this appears to be a simple cartrige loader; just load it, ram, cock, and fire!"
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "musket"
@@ -756,8 +757,9 @@
 	internal_magazine = TRUE
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/musket.ogg'
 	vary_fire_sound = FALSE
-	fire_delay = 20
+	fire_delay = 50
 	burst_size = 1
+	recoil = 10	//tee hee
 	spread = 14
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
