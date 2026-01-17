@@ -174,7 +174,7 @@
 	base_icon_state = "50"
 
 /obj/item/ammo_casing/vampire/c75
-	name = ".75 cartriage"
+	name = ".75 cartrige"
 	desc = "A .75 musket cartridge containing a musket ball and powder."
 	caliber = CALIBER_MUSKET
 	projectile_type = /obj/projectile/bullet/darkpack/vamp75
