@@ -640,7 +640,7 @@
 	inhand_y_dimension = 32
 	custom_price = 1000
 
-/obj/item/ammo_box/magazine/internal/vampdbarrel
+/obj/item/ammo_box/magazine/internal/darkpack_dbarrel
 	name = "double barrel internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
 	caliber = CALIBER_SHOTGUN
