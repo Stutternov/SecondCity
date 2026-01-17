@@ -669,7 +669,7 @@
 	burst_delay = 2
 	recoil = 4
 	fire_delay = 3
-	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampdbarrel
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/darkpack_dbarrel
 	can_be_sawn_off	= TRUE
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/pomp.ogg'
 	inhand_x_dimension = 32
