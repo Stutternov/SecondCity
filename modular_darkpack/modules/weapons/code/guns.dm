@@ -765,7 +765,6 @@
 	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5 //150 damage; it is a single-shot.
 	actions_types = list()
-	masquerade_violating = TRUE
 
 /obj/item/gun/ballistic/automatic/darkpack/musket/process_fire(mob/living/user)
 	..()
