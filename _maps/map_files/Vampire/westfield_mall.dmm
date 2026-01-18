@@ -16842,7 +16842,7 @@
 /obj/structure/vampdoor/reinf{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/access/police,
+/obj/effect/mapping_helpers/door/access/federal,
 /turf/open/floor/wood/smooth,
 /area/vtm/westfield_mall/interior/art_store)
 "jeh" = (
@@ -17016,7 +17016,7 @@
 /obj/structure/vampdoor{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/access/director,
+/obj/effect/mapping_helpers/door/access/federal,
 /turf/open/floor/iron/grimy,
 /area/vtm/westfield_mall/interior/art_store)
 "lra" = (
