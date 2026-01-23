@@ -18,6 +18,7 @@
 	name = "bullet"
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "s-casing"
+	item_flags = null
 	embed_type = null
 
 /obj/item/shrapnel/plastic

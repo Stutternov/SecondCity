@@ -47,6 +47,9 @@
 	/// Set when this casing is fired. Only used for checking if it should burn a user's hand when caught from an ejection port.
 	var/shot_timestamp = 0
 
+	/// This tracks what gun fired what bullet. Every time process_fire triggers on a gun, it'll apply said guns serial number to the bullet.
+	var/serial_type_index = null
+
 /obj/item/ammo_casing/spent
 	name = "spent bullet casing"
 	loaded_projectile = null

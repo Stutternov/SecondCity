@@ -593,8 +593,7 @@
 	if(target != user && chambered.loaded_projectile && could_it_misfire && prob(misfire_probability) && blow_up(user))
 		to_chat(user, span_userdanger("[src] misfires!"))
 		return
-
-	if (sawn_off)
+	if(sawn_off)
 		bonus_spread += SAWN_OFF_ACC_PENALTY
 
 	// DARKPACK EDIT ADD - recoil
@@ -602,8 +601,11 @@
 		var/recoil_reduction = SSroll.storyteller_roll(user.st_get_stat(STAT_FIREARMS), initial(recoil), user, numerical = TRUE)
 		recoil = max(initial(recoil) - recoil_reduction, 0)
 		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
-	// DARKPACK EDIT END
 
+	// DARKPACK EDIT ADD - serial numbering
+	if(serial_type && serial_shown)
+		chambered.serial_type_index = src.serial_type
+	// DARKPACK EDIT END
 	return ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)

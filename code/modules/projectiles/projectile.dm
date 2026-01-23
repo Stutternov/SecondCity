@@ -273,6 +273,8 @@
 	var/accurate_range = 100
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
+	/// Tracks which gun shot the bullet
+	var/serial_type_index_bullet = ""
 
 /obj/projectile/Initialize(mapload)
 	. = ..()

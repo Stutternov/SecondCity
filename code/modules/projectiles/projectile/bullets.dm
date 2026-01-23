@@ -12,6 +12,8 @@
 	wound_bonus = 0
 	wound_falloff_tile = -5
 	embed_falloff_tile = -3
+	// Used to track what gun fired the bullet; applies to embedded shrapnel
+	var/serial_type_index = null
 
 /obj/projectile/bullet/smite
 	name = "divine retribution"
