@@ -1,15 +1,10 @@
-// Microstamping on used casings
-#define DETSCAN_CATEGORY_MICROSTAMP "Microstamp"
-// Bullet shrapnel recovered from body/turf
-#define DETSCAN_CATEGORY_BULLET "Bullet"
-
 // Microstamping category
 /datum/detective_scan_category/microstamp
 	id = DETSCAN_CATEGORY_MICROSTAMP
 	name = "Microstamping"
 	display_order = 10
 	ui_icon = "ss-casing"
-	ui_icon_color = "green"
+	ui_icon_color = "yellow"
 
 // Bullet shrapnel category
 /datum/detective_scan_category/bullet
@@ -22,8 +17,8 @@
 // Unique subtype of the base TG Station scanner.
 // Seperated for unique actions in forensics gathering.
 /obj/item/darkpack/detective_scanner
-	name = "forensic magnifier"
-	desc = "Used to detect and gather evidence, particularly that of  biomass for DNA, recover fingerprints, or closer examination of bullet casings. Can show a report of the findings."
+	name = "forensics kit"
+	desc = "A kit used to detect and gather evidence; particularly that of biomass for DNA, recovery of fingerprints, or closer examination of bullet casings. Can be used to print reports of your findings."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "magnifier"
 	w_class = WEIGHT_CLASS_SMALL
