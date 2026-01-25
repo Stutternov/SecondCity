@@ -110,11 +110,6 @@
 
 	var/pb_knockback = 0
 
-	/// Darkpack - Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
-	var/serial_type = ""
-	/// Darkpack - If set to false it won't show any serial number; specifically for non-guns that are pathed as guns. (I.e - crossbows)
-	var/serial_shown = TRUE
-
 	/// Cooldown for the visible message sent from gun flipping.
 	COOLDOWN_DECLARE(flip_cooldown)
 
@@ -123,10 +118,6 @@
 	if(ispath(pin))
 		pin = new pin
 		pin.gun_insert(new_gun = src, starting = TRUE)
-
-	//Darkpack Edit - Adds serial number generation on weapons.
-	if(serial_type)
-		serial_type += "-[generate_gun_serial(pick(3,4,5,6,7,8))]"
 
 	add_seclight_point()
 	add_bayonet_point()
@@ -211,14 +202,6 @@
 			. += span_warning("It appears heavily damaged.")
 		if(0 to 25)
 			. += span_boldwarning("It's falling apart!")
-
-	//Darkpack Start
-	if(in_range(user, src) && serial_shown)
-		if(serial_type)
-			. += span_warning("There is a serial number on this gun, it reads [serial_type].")
-		else if(initial(serial_type)) // hopefully byond also has a way to handle this at runtime!
-			. += span_boldwarning("The serial number has been rendered illegible!")
-	//Darkpack End
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
@@ -637,25 +620,6 @@
 								span_warning("You pry [pin] out with [I], destroying the pin in the process."), null, 3)
 			QDEL_NULL(pin)
 			return ITEM_INTERACT_SUCCESS
-
-//DARKPACK START - Serial number obliteration.
-/obj/item/gun/screwdriver_act_secondary(mob/living/user, obj/item/I)
-	. = ..()
-	if(.)
-		return
-	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-		return
-	if(serial_type)
-		user.visible_message(span_warning("[user] attempts to obliterate the [name]'s serial number with [I]"),
-		span_notice("You attempt to obliterate the [name]'s serial number. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
-		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
-			if(!serial_type)	// Failsafe
-				return
-			user.visible_message(span_notice("[name]'s serial number is oblittered by [user], erasing its unique identifying numbers."),
-								span_warning("You obliterate [name]'s serial number with [I], erasing its unique identifying numbers."))
-			serial_type = null
-			return FALSE
-//DARKPACK END
 
 /obj/item/gun/welder_act(mob/living/user, obj/item/I)
 	. = ..()
