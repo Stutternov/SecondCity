@@ -110,9 +110,9 @@
 
 	var/pb_knockback = 0
 
-	/// Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
+	/// Darkpack - Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
 	var/serial_type = ""
-	/// If set to false it won't show any serial number; specifically for non-guns that are pathed as guns. (I.e - crossbows)
+	/// Darkpack - If set to false it won't show any serial number; specifically for non-guns that are pathed as guns. (I.e - crossbows)
 	var/serial_shown = TRUE
 
 	/// Cooldown for the visible message sent from gun flipping.
@@ -124,6 +124,7 @@
 		pin = new pin
 		pin.gun_insert(new_gun = src, starting = TRUE)
 
+	//Darkpack Edit - Adds serial number generation on weapons.
 	if(serial_type)
 		serial_type += "-[generate_gun_serial(pick(3,4,5,6,7,8))]"
 
@@ -211,11 +212,13 @@
 		if(0 to 25)
 			. += span_boldwarning("It's falling apart!")
 
+	//Darkpack Start
 	if(in_range(user, src) && serial_shown)
 		if(serial_type)
 			. += span_warning("There is a serial number on this gun, it reads [serial_type].")
 		else if(initial(serial_type)) // hopefully byond also has a way to handle this at runtime!
 			. += span_boldwarning("The serial number has been rendered illegible!")
+	//Darkpack End
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
@@ -635,6 +638,7 @@
 			QDEL_NULL(pin)
 			return ITEM_INTERACT_SUCCESS
 
+//DARKPACK START - Serial number obliteration.
 /obj/item/gun/screwdriver_act_secondary(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
@@ -651,6 +655,7 @@
 								span_warning("You obliterate [name]'s serial number with [I], erasing its unique identifying numbers."))
 			serial_type = null
 			return FALSE
+//DARKPACK END
 
 /obj/item/gun/welder_act(mob/living/user, obj/item/I)
 	. = ..()

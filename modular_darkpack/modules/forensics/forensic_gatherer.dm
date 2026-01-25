@@ -16,93 +16,18 @@
 
 // Unique subtype of the base TG Station scanner.
 // Seperated for unique actions in forensics gathering.
-/obj/item/darkpack/detective_scanner
+/obj/item/detective_scanner/darkpack
 	name = "forensics kit"
 	desc = "A kit used to detect and gather evidence; particularly that of biomass for DNA, recovery of fingerprints, or closer examination of bullet casings. Can be used to print reports of your findings."
 	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
 	icon_state = "magnifier"
-	w_class = WEIGHT_CLASS_SMALL
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	item_flags = NOBLUDGEON
-	slot_flags = ITEM_SLOT_BELT
-	/// if the scanner is currently busy processing
-	var/scanner_busy = FALSE
-	var/list/log_data = list()
-	var/range = 1
-	var/view_check = TRUE
-	var/forensicPrintCount = 0
+	range = 1
 
-/obj/item/darkpack/detective_scanner/interact(mob/user)
-	. = ..()
-	if(user.stat != CONSCIOUS || !user.can_read(src) || user.is_blind())
-		return ITEM_INTERACT_BLOCKING
-	ui_interact(user)
-	return ITEM_INTERACT_SUCCESS
-
-/**
- * safe_print_report - a wrapper proc for print_report
- *
- * Calls print_report(), and should a runtime occur within we can still reset the 'busy' state
- */
-/obj/item/darkpack/detective_scanner/proc/safe_print_report()
-	print_report()
-	scanner_busy = FALSE
-
-/obj/item/darkpack/detective_scanner/proc/print_report()
-	// Create our paper
-	var/obj/item/paper/report_paper = new(get_turf(src))
-
-	//This could be a global count like sec and med record printouts. See GLOB.manifest.generalPrintCount AKA datacore.dm
-	var/frNum = ++forensicPrintCount
-
-	report_paper.name = "FR-[frNum] 'Forensic Record'"
-	var/list/report_text = list("<h1>Forensic Record - (FR-[frNum])</h1><hr>")
-
-	for(var/datum/detective_scanner_log/log_entry as anything in log_data)
-		report_text += log_entry.generate_report_text()
-
-	report_text += "<h1>Notes:</h1><br>"
-
-	report_paper.add_raw_text(report_text.Join())
-	report_paper.update_appearance()
-
-	if(ismob(loc))
-		var/mob/printer = loc
-		printer.put_in_hands(report_paper)
-		balloon_alert(printer, "logs cleared")
-
-	// Clear the logs
-	log_data = list()
-
-/obj/item/darkpack/detective_scanner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	if(SHOULD_SKIP_INTERACTION(interacting_with, src, user))
-		return NONE // lets us put our scanner away without trying to scan the bag
-	safe_scan(user, interacting_with)
-	return ITEM_INTERACT_SUCCESS
-
-/obj/item/darkpack/detective_scanner/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	safe_scan(user, interacting_with)
-	return ITEM_INTERACT_SUCCESS
-
-/**
- * safe_scan - a wrapper proc for scan()
- *
- * calls scan(), and should a runtime occur within we can still reset the 'busy' state
- */
-/obj/item/darkpack/detective_scanner/proc/safe_scan(mob/user, atom/atom_to_scan)
-	set waitfor = FALSE
-	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
-		return
-	if(!scan(user, atom_to_scan)) // this should only return FALSE if a runtime occurs during the scan proc, so ideally never
-		balloon_alert(user, "scanner error!") // but in case it does, we 'error' instead of just bricking the scanner
-	scanner_busy = FALSE
-
-
-/obj/item/darkpack/detective_scanner/proc/scan(mob/user, atom/scanned_atom)
+/obj/item/detective_scanner/darkpack/proc/scan_darkpack(mob/user, atom/scanned_atom)
 	if(loc != user)
 		return TRUE
 	// Can scan items we hold and store
@@ -214,85 +139,3 @@
 	stoplag(3 SECONDS)
 	log_data += log_entry
 	return TRUE
-
-
-/obj/item/darkpack/detective_scanner/click_alt(mob/living/user)
-	return clear_logs()
-
-/obj/item/darkpack/detective_scanner/examine(mob/user)
-	. = ..()
-	if(length(log_data) && !scanner_busy)
-		. += span_notice("Alt-click to clear scanner logs.")
-
-
-/obj/item/darkpack/detective_scanner/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "ForensicScanner", "Forensic Scanner")
-		ui.open()
-
-/obj/item/darkpack/detective_scanner/ui_data(mob/user)
-	var/list/logs = list()
-	for(var/datum/detective_scanner_log/log as anything in log_data)
-		UNTYPED_LIST_ADD(logs, log.ui_data(user))
-
-	var/list/data = list()
-	data["logs"] = logs
-	return data
-
-/obj/item/darkpack/detective_scanner/ui_static_data(mob/user)
-	var/list/categories = list()
-	for(var/key,value in GLOB.detective_scan_categories)
-		var/datum/detective_scan_category/category = value
-
-		var/list/category_data = list()
-		category_data["name"] = category.name
-		category_data["uiIcon"] = category.ui_icon
-		category_data["uiIconColor"] = category.ui_icon_color
-
-		categories[category.id] = category_data
-
-	var/list/data = list()
-	data["categories"] = categories
-	return data
-
-/obj/item/darkpack/detective_scanner/ui_act(action, params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("clear")
-			clear_logs(ui.user)
-			ui.send_update()
-		if("delete")
-			var/index = params["index"] + 1
-			if(!log_data[index])
-				return
-			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
-				return
-			log_data.Cut(index, index + 1)
-			balloon_alert(ui.user, "log deleted")
-			ui.send_update()
-		if("print")
-			if(!length(log_data))
-				balloon_alert(ui.user, "no logs!")
-				return
-			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
-				return
-			scanner_busy = TRUE
-			playsound(src, 'sound/machines/printer.ogg', 50)
-			balloon_alert(ui.user, "printing report...")
-			addtimer(CALLBACK(src, PROC_REF(safe_print_report)), 3 SECONDS)
-
-/obj/item/darkpack/detective_scanner/proc/clear_logs(mob/living/user)
-	if(!length(log_data))
-		balloon_alert(user, "no logs!")
-		return CLICK_ACTION_BLOCKING
-	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
-		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "logs cleared")
-	log_data = list()
-	return CLICK_ACTION_SUCCESS

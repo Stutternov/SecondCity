@@ -561,6 +561,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5 //~52 damage vs 35 base .44 damage. It's ok, on par with 5.56 but lower pen and slower to fire due to bolt action.
 	masquerade_violating = FALSE
+	serial_type = "WN"
 
 /obj/item/ammo_box/magazine/internal/vampire/sniper
 	name = "sniper rifle internal magazine"
@@ -701,6 +702,7 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 	custom_price = 1200
+	serial_type = "BH"	//Beretta makes a lot of hunting shotguns so - w/e
 
 // Allows break-action appearance when shells are ejected.
 /obj/item/gun/ballistic/shotgun/vampire/doublebarrel/update_icon_state()
@@ -757,7 +759,7 @@
 	inhand_y_dimension = 32
 	masquerade_violating = FALSE
 	obj_flags = NONE
-	//No serial, it's a crossbow
+	serial_shown = FALSE	//No serial, it's a crossbow.
 
 /obj/item/ammo_box/magazine/internal/vampcrossbow
 	ammo_type = /obj/item/ammo_casing/vampire/bolt
@@ -792,6 +794,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5 //150 damage; it is a single-shot.
+	serial_shown = FALSE	//No serial, it's a musket.
 	actions_types = list()
 
 /obj/item/gun/ballistic/automatic/darkpack/musket/process_fire(mob/living/user)

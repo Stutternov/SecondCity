@@ -604,7 +604,7 @@
 
 	// DARKPACK EDIT ADD - serial numbering
 	if(serial_type && serial_shown)
-		chambered.serial_type_index = src.serial_type
+		chambered.serial_type_index = serial_type
 	// DARKPACK EDIT END
 	return ..()
 
