@@ -19,7 +19,7 @@
 /obj/item/detective_scanner/darkpack
 	name = "forensics kit"
 	desc = "A kit used to detect and gather evidence; particularly that of biomass for DNA, recovery of fingerprints, or closer examination of bullet casings. Can be used to print reports of your findings."
-	icon = 'modular_darkpack/modules/deprecated/icons/items.dmi'
+	icon = 'modular_darkpack\modules\forensics\icons\forensics_kit.dmi'
 	icon_state = "magnifier"
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
@@ -66,6 +66,11 @@
 	// Skill-check for scans
 	var/mob/living/carbon/human/H = user
 	var/investigation_dice = H.st_get_stat(STAT_PERCEPTION) + H.st_get_stat(STAT_INVESTIGATION)
+
+	//Minium skill requirement to even use the thing
+	if(H.st_get_stat(STAT_INVESTIGATION) <= 0)
+		to_chat(user, span_warning("You lack the skill to recover anything; you only succeed in contaminating the scene!"))
+		return FALSE
 
 	if(ishuman(scanned_atom))
 		var/mob/living/carbon/human/scanned_human = scanned_atom

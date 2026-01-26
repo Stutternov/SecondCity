@@ -7131,7 +7131,7 @@
 #include "modular_darkpack\modules\food\code\food.dm"
 #include "modular_darkpack\modules\food\code\recipes.dm"
 #include "modular_darkpack\modules\food\code\structure.dm"
-#include "modular_darkpack\modules\forensics\forensic_gatherer.dm"
+#include "modular_darkpack\modules\forensics\code\forensic_gatherer.dm"
 #include "modular_darkpack\modules\government\code\carry_permit.dm"
 #include "modular_darkpack\modules\government\code\drivers_license.dm"
 #include "modular_darkpack\modules\government\code\passport.dm"
