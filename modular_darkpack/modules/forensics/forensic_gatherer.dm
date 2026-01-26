@@ -27,7 +27,7 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	range = 1
 
-/obj/item/detective_scanner/darkpack/proc/scan_darkpack(mob/user, atom/scanned_atom)
+/obj/item/detective_scanner/darkpack/scan(mob/user, atom/scanned_atom)
 	if(loc != user)
 		return TRUE
 	// Can scan items we hold and store
