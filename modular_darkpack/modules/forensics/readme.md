@@ -20,10 +20,6 @@ This module is for new forensics, adding serial numbering and bullet recovery fr
 
 - `code/__DEFINES/~darkpack/forensics.dm`
 
-### Other module changes:
-
-- `modular_darkpack/master_files/code/__HELPERS/serial_numbering.dm`
-
 ### Credits:
 
 rebel0
