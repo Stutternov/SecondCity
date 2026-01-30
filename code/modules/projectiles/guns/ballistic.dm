@@ -148,10 +148,12 @@
 	var/burst_select_sound = SFX_FIRE_MODE_SWITCH
 	COOLDOWN_DECLARE(recoil_skill_check) // DARKPACK EDIT ADD
 
-	/// Darkpack Edit Add - Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
+	// DARKPACK EDIT ADD START - FORENSICS
+	/// Base serial number prefix, whatever's here will come before the numbers. Blank means no number/obliterated number.
 	var/serial_type = ""
-	/// Darkpack Edit Add - If set to false it won't show any serial number; specifically for non-guns that are pathed as guns. (I.e - crossbows)
+	/// If set to false it won't show any serial number; specifically for non-guns that are pathed as guns. (I.e - crossbows)
 	var/serial_shown = TRUE
+	// DARKPACK EDIT ADD END
 
 /obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
