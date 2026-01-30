@@ -612,10 +612,10 @@
 		recoil = max(initial(recoil) - recoil_reduction, 0)
 		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
 
-	// DARKPACK EDIT ADD - serial numbering
+	// DARKPACK EDIT ADD START - FORENSICS
 	if(serial_type && serial_shown)
 		chambered.serial_type_index = serial_type
-	// DARKPACK EDIT END
+	// DARKPACK EDIT ADD END
 	return ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
