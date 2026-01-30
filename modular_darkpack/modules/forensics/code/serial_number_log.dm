@@ -1,14 +1,14 @@
-/obj/effect/landmark/start/serial_number_log
+/obj/effect/mapping_helpers/serial_number_log
 	name = "Gun serial ref sheet landmark"
 	desc = "Checks all the guns in the placed area then prints their name and numbers on a generated piece of paper!"
 	delete_after_roundstart = TRUE
 
 // Needs to load AFTER everything else so it properly checks guns in the defined area.
-/obj/effect/landmark/start/serial_number_log/Initialize()
+/obj/effect/mapping_helpers/serial_number_log/Initialize()
 	..()
 	. = INITIALIZE_HINT_LATELOAD
 
-/obj/effect/landmark/start/serial_number_log/LateInitialize()
+/obj/effect/mapping_helpers/serial_number_log/LateInitialize()
 	. = ..()
 	var/area/our_area = get_area(src)
 	var/text = "Armoury Firearm Serial Numbers - Master List \n"

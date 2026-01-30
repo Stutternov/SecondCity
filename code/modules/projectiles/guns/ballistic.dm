@@ -163,9 +163,10 @@
 		bolt_locked = TRUE
 		update_appearance()
 		return
-	//Darkpack Edit - Adds serial number generation on weapons.
+	// DARKPACK EDIT ADD START - FORENSICS - (Adds serial number generation on weapons)
 	if(serial_type)
 		serial_type += "-[generate_gun_serial(pick(3,4,5,6,7,8))]"
+	// DARKPACK EDIT ADD END
 	if (!magazine)
 		magazine = new spawn_magazine_type(src)
 		if(!istype(magazine, accepted_magazine_type))
@@ -729,13 +730,13 @@
 	var/count_chambered = !(bolt_type == BOLT_TYPE_NO_BOLT || bolt_type == BOLT_TYPE_OPEN)
 	. += "It has <b>[get_ammo(count_chambered)]</b> round\s remaining."
 
-	//Darkpack Start
+	// DARKPACK EDIT ADD START - FORENSICS
 	if(in_range(user, src) && serial_shown)
 		if(serial_type)
 			. += span_warning("There is a serial number on this gun, it reads [serial_type].")
 		else if(initial(serial_type)) // hopefully byond also has a way to handle this at runtime!
 			. += span_boldwarning("The serial number has been rendered illegible!")
-	//Darkpack End
+	// DARKPACK EDIT ADD END
 
 	if (!chambered && !hidden_chambered)
 		. += "It does not seem to have a round chambered."
@@ -922,7 +923,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	/// How quiet should the gun be when we're installed?
 	var/suppression = SUPPRESSED_QUIET
 
-//DARKPACK START - Serial number obliteration.
+//DARKPACK START - FORENSICS - (Serial number obliteration)
 /obj/item/gun/ballistic/screwdriver_act_secondary(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
