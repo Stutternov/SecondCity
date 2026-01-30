@@ -14,18 +14,18 @@
 	ui_icon = "flask"
 	ui_icon_color = "red"
 
-// Unique subtype of the base TG Station scanner.
-// Seperated for unique actions in forensics gathering.
+// Unique subtype of the base TG Station scanner; this one lets for unique bullet scanning and has skill-checks on it.
 /obj/item/detective_scanner/darkpack
 	name = "forensics kit"
 	desc = "A kit used to detect and gather evidence; particularly that of biomass for DNA, recovery of fingerprints, or closer examination of bullet casings. Can be used to print reports of your findings."
 	icon = 'modular_darkpack/modules/forensics/icons/forensics_kit.dmi'
 	icon_state = "magnifier"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	inhand_icon_state = "electronic"
 	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	range = 1
+	range = 1	//Stops across the room gathering.
 
 /obj/item/detective_scanner/darkpack/scan(mob/user, atom/scanned_atom)
 	if(loc != user)
