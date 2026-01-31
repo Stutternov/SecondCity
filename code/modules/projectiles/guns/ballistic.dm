@@ -923,7 +923,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	/// How quiet should the gun be when we're installed?
 	var/suppression = SUPPRESSED_QUIET
 
-//DARKPACK START - FORENSICS - (Serial number obliteration)
+// DARKPACK EDIT ADD START - FORENSICS - (Serial number obliteration)
 /obj/item/gun/ballistic/screwdriver_act_secondary(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
@@ -940,4 +940,4 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 								span_warning("You obliterate [name]'s serial number with [I], erasing its unique identifying numbers."))
 			serial_type = null
 			return FALSE
-//DARKPACK END
+// DARKPACK EDIT ADD END
