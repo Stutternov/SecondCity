@@ -1,5 +1,0 @@
-author: "theselfish"
-delete-after: True
-changes:
-  - rscadd: "Alt Job Titles"
-  - qol: "Something about \"records are unassigned by default, but if edited without input becomes unknown\" I copy and pasted this shit man."
