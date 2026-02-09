@@ -42,8 +42,7 @@
 		power_area.power_environ = FALSE
 		power_area.power_change()
 		power_area.fire_controled = FALSE
-		var/datum/effect_system/spark_spread/local_spark = new /datum/effect_system/spark_spread
-		local_spark.set_up(5, 1, get_turf(src))
+		var/datum/effect_system/basic/spark_spread/local_spark = new(get_turf(src), 5, 1)
 		local_spark.start()
 		for(var/obj/machinery/light/L in power_area)
 			L.update(FALSE)

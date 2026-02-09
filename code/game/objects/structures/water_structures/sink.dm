@@ -275,7 +275,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 /obj/structure/sink/basin
 	icon_state = "basin"
 	pixel_z = 0
-	pixel_shift = 0
+	// pixel_shift = 0
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/basin, (0))
 // DARKPACK EDIT ADD END
