@@ -115,16 +115,8 @@
 	name = "lit [initial(name)]"
 	set_light_on(TRUE)
 
-	if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
-		var/datum/effect_system/reagents_explosion/explosion = new()
-		explosion.set_up(round(reagents.get_reagent_amount(/datum/reagent/toxin/plasma) * 0.4, 1), get_turf(src), 0, 0)
-		explosion.start()
-		qdel(src)
-		return
-	if(reagents.get_reagent_amount(/datum/reagent/fuel)) // the fuel explodes, too, but much less violently
-		var/datum/effect_system/reagents_explosion/explosion = new()
-		explosion.set_up(round(reagents.get_reagent_amount(/datum/reagent/fuel) * 0.2, 1), get_turf(src), 0, 0)
-		explosion.start()
+	if(reagents.spark_act(0, NONE, list()) & SPARK_ACT_DESTRUCTIVE)
+		usr?.log_message("lit a rigged bong", LOG_VICTIM)
 		qdel(src)
 		return
 
