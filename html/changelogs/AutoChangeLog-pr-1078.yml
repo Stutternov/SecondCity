@@ -1,0 +1,4 @@
+author: "FalloutFalcon"
+delete-after: True
+changes:
+  - rscdel: "removes superfluous weaknesses in favor of the trait for baali"

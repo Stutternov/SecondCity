@@ -1,0 +1,5 @@
+author: "FalloutFalcon"
+delete-after: True
+changes:
+  - bugfix: "Frenzy verb is no longer displayed in the verb panel. It can still be found in the context menu for mobs."
+  - qol: "Frenzy verb only displays if your a supernatural"
