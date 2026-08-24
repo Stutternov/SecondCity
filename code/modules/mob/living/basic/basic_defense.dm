@@ -95,7 +95,10 @@
 		else
 			var/datum/storyteller_roll/damage/damage_roll = new damage_roll_type()
 			damage_roll.difficulty += damage_difficulty_bonus
-			damage = damage_roll.st_roll(user, src, damage_bonus_dice) TTRPG_DAMAGE
+			if(HAS_TRAIT(user, TRAIT_SHARPFISTS))
+				damage = damage_roll.st_roll(user, src, damage_bonus_dice) LETHAL_TTRPG_DAMAGE
+			else
+				damage = damage_roll.st_roll(user, src, damage_bonus_dice) TTRPG_DAMAGE
 
 	if(damage <= 0 || !attack_landed)
 		playsound(loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)

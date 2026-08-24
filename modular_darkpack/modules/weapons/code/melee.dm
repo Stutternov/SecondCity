@@ -229,7 +229,7 @@
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	icon_state = "pipe"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
-	force = 2 LETHAL_TTRPG_DAMAGE
+	force = 1 LETHAL_TTRPG_DAMAGE
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	w_class = WEIGHT_CLASS_NORMAL

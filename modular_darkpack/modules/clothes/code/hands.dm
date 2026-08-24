@@ -95,8 +95,9 @@
 
 /obj/item/clothing/gloves/vampire/brassknuckles/spiked
 	name = "spiked steel knuckles"
-	desc = "A set of tarnished steel rings fused together and topped with piercing metal spikes. Illegal in most places."
+	desc = "A set of tarnished steel rings fused together and topped with piercing metal spikes. Illegal in most places and rather lethal."
 	icon_state = "spikedknuckles"
+	clothing_traits = list(TRAIT_BRASSKNUCKLES, TRAIT_SHARPFISTS)		// Brassknuckles = damage bonus to punches, sharpfists = lethal damage to punches
 
 /obj/item/clothing/gloves/vampire/brassknuckles/spiked/equipped(mob/living/carbon/human/user, slot)
 	..()
